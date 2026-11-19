@@ -15,17 +15,29 @@ final class PublicController extends AbstractController
         $name = "Pitz Michaël";
 
         return $this->render('public/index.html.twig', [
+            // variable par défaut
             'controller_name' => 'Homepage',
             // devient une variable pour le template
             // en l'ajoutant explicitement au tableau
             'my_name' => $name,
+            // passage du nom de la page
+            'titre' => 'Homepage',
             // attaque XSS sur public/index.html.twig
             'XSS' => "<script> alert('XSS!'); </script>",
             // script voulu passé dans le template
             'my_script' => "<script> const aujourdHui = new Date();
 document.write(aujourdHui.toLocaleString('fr-FR'));
  </script>",
- 
+
         ]);
+    }
+
+
+    // création de la méthode contact sans routing
+    // routing dans config/routes.yaml
+    public function contact(): Response
+    {
+        // Nous allons envoyer une réponse de type texte en utilisant la classe Response (html basique) <body> est présent pour la bare de débug
+        return new Response('<body><h1>Page de contact</h1><a href="./">Retour à l\'accueil</a></body>');
     }
 }

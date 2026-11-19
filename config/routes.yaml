@@ -7,5 +7,10 @@
 # To list all registered routes, run the following command:
 #   bin/console debug:router
 
+# routing dans le routes.yaml vers /contact
+public_contact:
+    path: /contact
+    controller: App\Controller\PublicController::contact
+# Les autres routes sont dans attributs dans les contrôleurs
 controllers:
     resource: routing.controllers

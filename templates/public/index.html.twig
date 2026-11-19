@@ -17,10 +17,12 @@ et y rajouter le titre de la page actuelle grâce à parent {{ parent() }}  #}
     <?=$name ?> => ne fonctionne pas par défaut
     #}
     <h1>Salut {{ my_name}}, <small>vous êtes sur {{ controller_name }}! ✅</small></h1>
+    <navbar>
     <ul>
-        <li>Your controller at <code>C:/WEB2026/PHP/exemplebackend/src/Controller/PublicController.php</code></li>
-        <li>Your template at <code>C:/WEB2026/PHP/exemplebackend/templates/public/index.html.twig</code></li>
+        <li>Accueil</li>
+        <li><a href='{{ path('public_contact') }}'>Contact</a></li>
     </ul>
+    </navbar>
     <h2>Tentative XSS</h2>
     <p>Symfony protège les variables twig par défaut, sinon il faut rajouter<br> XSS|escape ou XSS|e</p>
     <p>{{ XSS }}</p>
