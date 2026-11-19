@@ -11,8 +11,14 @@ final class PublicController extends AbstractController
     #[Route('/', name: 'homepage')]
     public function index(): Response
     {
+        // variable locale
+        $name = "Pitz Michaël";
+
         return $this->render('public/index.html.twig', [
-            'controller_name' => 'PublicController',
+            'controller_name' => 'Homepage',
+            // devient une variable pour le template
+            // en l'ajoutant explicitement au tableau
+            'my_name' => $name,
         ]);
     }
 }

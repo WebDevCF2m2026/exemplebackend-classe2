@@ -1,6 +1,9 @@
+{# On étend de base.html.twig #}
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PublicController!{% endblock %}
+{# on va hériter du title depuis base (Exemple Backend | ) 
+et y rajouter le titre de la page actuelle grâce à parent {{ parent() }}  #}
+{% block title %}{{ parent() }}Homepage{% endblock %}
 
 {% block body %}
 <style>
@@ -9,7 +12,11 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {# affichage d'une variable passée en tableau à la vue twig 
+    {{ variable }} => echo $varaible
+    <?=$name ?> => ne fonctionne pas par défaut
+    #}
+    <h1>Salut {{ my_name}}, <small>vous êtes sur {{ controller_name }}! ✅</small></h1>
 
     This friendly message is coming from:
     <ul>
