@@ -13,15 +13,24 @@ et y rajouter le titre de la page actuelle grâce à parent {{ parent() }}  #}
 
 <div class="example-wrapper">
     {# affichage d'une variable passée en tableau à la vue twig 
-    {{ variable }} => echo $varaible
+    {{ variable }} => echo $variable
     <?=$name ?> => ne fonctionne pas par défaut
     #}
     <h1>Salut {{ my_name}}, <small>vous êtes sur {{ controller_name }}! ✅</small></h1>
-
-    This friendly message is coming from:
     <ul>
         <li>Your controller at <code>C:/WEB2026/PHP/exemplebackend/src/Controller/PublicController.php</code></li>
         <li>Your template at <code>C:/WEB2026/PHP/exemplebackend/templates/public/index.html.twig</code></li>
     </ul>
+    <h2>Tentative XSS</h2>
+    <p>Symfony protège les variables twig par défaut, sinon il faut rajouter<br> XSS|escape ou XSS|e</p>
+    <p>{{ XSS }}</p>
+    <h2>Script autorisé</h2>
+    <p>Pour autoriser un script, il faut utiliser:<br>
+    Variable|raw</p>
+    <h3>Non interprété</h3>
+    <p>{{ my_script }}</p>
+    <h3>Interprété avec |raw</h3>
+    <p>{{ my_script|raw }}</p>
+    
 </div>
 {% endblock %}

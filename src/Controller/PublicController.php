@@ -19,6 +19,13 @@ final class PublicController extends AbstractController
             // devient une variable pour le template
             // en l'ajoutant explicitement au tableau
             'my_name' => $name,
+            // attaque XSS sur public/index.html.twig
+            'XSS' => "<script> alert('XSS!'); </script>",
+            // script voulu passé dans le template
+            'my_script' => "<script> const aujourdHui = new Date();
+document.write(aujourdHui.toLocaleString('fr-FR'));
+ </script>",
+ 
         ]);
     }
 }
