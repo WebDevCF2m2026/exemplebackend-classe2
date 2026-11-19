@@ -40,4 +40,14 @@ document.write(aujourdHui.toLocaleString('fr-FR'));
         // Nous allons envoyer une réponse de type texte en utilisant la classe Response (html basique) <body> est présent pour la bare de débug
         return new Response('<body><h1>Page de contact</h1><a href="./">Retour à l\'accueil</a></body>');
     }
+
+    // Méthode article(îd) avec route et variable get
+    #[Route('/article/{id}', name: 'public_article')]
+    public function article($id): Response
+    {
+        // Nous allons envoyer une réponse de type texte en utilisant
+        // la classe Response en utilisant la variable $id
+        return new Response("<body><h1>Page de l'article dont l'id est $id</h1>
+        <a href='../'>Retour à l'accueil</a></body>");
+    }
 }
