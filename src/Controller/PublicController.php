@@ -50,4 +50,17 @@ document.write(aujourdHui.toLocaleString('fr-FR'));
         return new Response("<body><h1>Page de l'article dont l'id est $id</h1>
         <a href='../'>Retour à l'accueil</a></body>");
     }
+
+    // protection de la variable id qui ne peut être qu'un digit {id<\d+>}
+    // Autres possibilités pour faire la même chose + clair :
+    // #[Route('/articleType/{id}', name: 'public_article_type', requirements: ['id' => '[0-9]+'])]
+    // https://symfony.com/doc/7.4/routing.html#parameters-validation
+    #[Route('/articleType/{id<\d+>}', name: 'public_article_type',methods: ['GET'])]
+    public function articleType(int $id): Response
+    {
+        // Nous allons envoyer une réponse de type texte en utilisant la classe Response en utilisant
+         // la variable $id
+        return new Response("<body><h1>Page de l'article Typée en int dont l'id est $id</h1>
+        <p>Ne fonctionne qu'avec une variable GET de type numérique !</p><a href='../../'>Retour à l'accueil</a></body>");
+    }
 }

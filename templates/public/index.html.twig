@@ -22,6 +22,9 @@ et y rajouter le titre de la page actuelle grâce à parent {{ parent() }}  #}
         <li>Accueil</li>
         <li><a href='{{ path('public_contact') }}'>Contact</a>-> Exemple avec Response</li>
         <li><a href='{{ path('public_article', {'id':5}) }}'>Article 5</a>-> sans protection</li>
+        {# chemin vers la page de l'article en utilisant son nom  de route (public_article_type) 
+et en envoyant l'id 1 en paramètre protégé#}
+<li>Un <a href="{{ path('public_article_type', {'id': 2}) }}">Article dont l'id vaut 2</a> (numérique entier non signé)</li>
     </ul>
     </navbar>
     <h2>Tentative XSS</h2>
