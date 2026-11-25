@@ -63,4 +63,20 @@ document.write(aujourdHui.toLocaleString('fr-FR'));
         return new Response("<body><h1>Page de l'article Typée en int dont l'id est $id</h1>
         <p>Ne fonctionne qu'avec une variable GET de type numérique !</p><a href='../../'>Retour à l'accueil</a></body>");
     }
+
+    // protection de la variable id qui ne peut être qu'un digit
+    // et si pas de variable, 1 par défaut
+    #[Route('/articleTypeDefault/{id}', 
+        name: 'public_article_type_default', 
+        defaults: ['id' => 1], 
+        requirements: ['id' => '[1-9][0-9]*'],
+        methods: ['GET'])]
+    public function articleTypeDefault(int $id): Response
+    {
+        // Nous allons envoyer une réponse de type texte en utilisant la classe Response en utilisant
+        // la variable $id
+        return new Response("<body><h1>Page de l'article Typée avec valeur par défaut en int dont l'id est $id</h1>
+        <p>Ne fonctionne qu'avec une variable GET de type numérique !<br>
+        La valeur par défaut est 1</p><a href='../../'>Retour à l'accueil</a></body>");
+    }
 }

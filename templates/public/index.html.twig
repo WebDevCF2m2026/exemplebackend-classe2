@@ -25,6 +25,12 @@ et y rajouter le titre de la page actuelle grâce à parent {{ parent() }}  #}
         {# chemin vers la page de l'article en utilisant son nom  de route (public_article_type) 
 et en envoyant l'id 1 en paramètre protégé#}
 <li>Un <a href="{{ path('public_article_type', {'id': 2}) }}">Article dont l'id vaut 2</a> (numérique entier non signé)</li>
+{# chemin vers la page de l'article en utilisant son nom  de route (public_article_type_default)
+sans envoyer de paramètre#}
+        <li>Un <a href="{{ path('public_article_type_default') }}">articleTypeDefault 
+        sans id</a></li>
+        <li>Un <a href="{{ path('public_article_type_default', {'id': 15}) }}">articleTypeDefault 
+        avec un id de 15</a> le 0 est refusé</li>
     </ul>
     </navbar>
     <h2>Tentative XSS</h2>
