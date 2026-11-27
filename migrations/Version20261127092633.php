@@ -10,17 +10,17 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20261125110644 extends AbstractMigration
+final class Version20261127092633 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Création de la table Article non terminée';
+        return '';
     }
 
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE article (id INT AUTO_INCREMENT NOT NULL, article_title VARCHAR(120) NOT NULL, article_slug VARCHAR(124) NOT NULL, article_content LONGTEXT NOT NULL, article_date_created DATETIME DEFAULT NULL, PRIMARY KEY (id)) DEFAULT CHARACTER SET utf8mb4');
+        $this->addSql('CREATE TABLE article (id INT UNSIGNED AUTO_INCREMENT NOT NULL, article_title VARCHAR(120) NOT NULL, article_slug VARCHAR(124) NOT NULL, article_content LONGTEXT NOT NULL, article_date_created DATETIME DEFAULT CURRENT_TIMESTAMP, article_date_update DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP, article_is_visible TINYINT DEFAULT 0 NOT NULL, UNIQUE INDEX UNIQ_23A0E6628DF1C63 (article_slug), PRIMARY KEY (id)) DEFAULT CHARACTER SET utf8mb4');
         $this->addSql('CREATE TABLE messenger_messages (id BIGINT AUTO_INCREMENT NOT NULL, body LONGTEXT NOT NULL, headers LONGTEXT NOT NULL, queue_name VARCHAR(190) NOT NULL, created_at DATETIME NOT NULL, available_at DATETIME NOT NULL, delivered_at DATETIME DEFAULT NULL, INDEX IDX_75EA56E0FB7336F0E3BD61CE16BA31DBBF396750 (queue_name, available_at, delivered_at, id), PRIMARY KEY (id))');
     }
 
